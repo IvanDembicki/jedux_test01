@@ -12,7 +12,7 @@ import 'package:jedux_test01/jedux_holders/user_paid_holder.dart';
 import 'jedux_const.dart';
 
 class JeduxBuilders {
-  static final Map<String, JeduxHolder Function(Map, JeduxHolder)> map = {
+  static final Map<String, JeduxHolderBuilder> map = {
     JeduxConst.APP_HOLDER: AppHolder.build,
     JeduxConst.LOGIN_WAITING_HOLDER: LoginWaitingHolder.build,
     JeduxConst.LOGIN_LOADING_HOLDER: LoginLoadingHolder.build,

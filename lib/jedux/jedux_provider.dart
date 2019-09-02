@@ -35,7 +35,6 @@ class _JeduxProviderState extends State<JeduxProvider> {
   void onStructureChanged(dynamic type) => setState(() => resetChild());
 
   @override
-  Widget build(BuildContext context) {
-    return child;
-  }
+  Widget build(BuildContext context) => child;
+
 }

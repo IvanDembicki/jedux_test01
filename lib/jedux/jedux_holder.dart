@@ -17,12 +17,15 @@ import 'jedux.dart';
 /// Если были вызваны методы [setProperty] или он информирует зависимый [JeduxHolderProvider] о том,
 /// что произошли изменения.
 
+typedef JeduxHolderBuilder = JeduxHolder Function(Map, JeduxHolder);
+
 abstract class JeduxHolder with _Notifier {
   static const String _TRUE = "true";
   static const String _FALSE = "false";
 
   static Map<String, dynamic> _buildersMap;
 
+  // TODO create empty maps messages
   static JeduxHolder create(Map<String, dynamic> jeduxData, Map<String, dynamic> buildersMap) {
     _buildersMap = buildersMap;
     final isChanged = _JeduxChecker.checkJeduxData(jeduxData);
