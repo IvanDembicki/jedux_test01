@@ -11,17 +11,17 @@ class UserNewbieView extends JeduxListener {
 
   @override
   Widget build(BuildContext context) {
-    print("${_holder.tabs}[UserNewbieView].build([context])");
     return Center(
       child: Column(
         children: <Widget>[
           Text(_holder.title),
-          MaterialButton(color: Colors.lightGreen,
+          MaterialButton(
+            color: Colors.lightGreen,
             onPressed: _holder.onPressed,
             child: Text("User newbie button"),
           ),
         ],
       ),
-    );;
+    );
   }
 }

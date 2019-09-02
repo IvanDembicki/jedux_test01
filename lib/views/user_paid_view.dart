@@ -13,7 +13,6 @@ class UserPaidView extends JeduxListener {
 
   @override
   Widget build(BuildContext context) {
-    print("${_holder.tabs}[UserPaidView].build([context])");
     return Center(
       child: Column(
         children: <Widget>[
@@ -24,14 +23,14 @@ class UserPaidView extends JeduxListener {
             child: Text("User paid button"),
           ),
           Text("Hello world"),
-
-          // _getOpenedChildView(_holder.openedChild),
+          _getOpenedChildView(jeduxHolder.openedChild),
         ],
       ),
     );
   }
 
   JeduxListener _getOpenedChildView(JeduxHolder openedHolder) {
+    openedHolder = openedHolder ?? jeduxHolder.initOpenedChild(byPosition: 0);
     switch (openedHolder.runtimeType) {
       case UserPageHolder:
         return UserPageView(openedHolder);

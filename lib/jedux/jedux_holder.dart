@@ -158,8 +158,6 @@ abstract class JeduxHolder with _Notifier {
 
   JeduxHolder get lastChild => getChildAt(_children.length - 1);
 
-
-
   int indexOf(JeduxHolder jeduxHolder) => _children.indexOf(jeduxHolder);
 
   JeduxHolder getChildAt(int index) => (index < 0 || index >= _children.length) ? null : _children[index];
@@ -232,16 +230,30 @@ abstract class JeduxHolder with _Notifier {
     _parent?.openHierarchy();
   }
 
+  JeduxHolder initOpenedChild({int byPosition, Type byType, String byNodeType, bool notifyListeners = false}) {
+    if (_children.length == 0) return null;
+
+    if (byPosition != null) {
+      _openedChild = getChildAt(byPosition);
+    } else if (byType != null) {
+      _openedChild = getChildByType(byType);
+    } else if (byNodeType != null) {
+      _openedChild = getChildByNodeType(byNodeType);
+    } else {
+      _openedChild = getChildAt(0);
+    }
+    _openedChild.setProperty(JeduxDataFormat.OPENED, "true", notifyListeners: notifyListeners);
+    return _openedChild;
+  }
+
   JeduxHolder _openedChild;
 
   JeduxHolder get openedChild {
-    if (_openedChild == null && _children.length > 0) {
-      _children[0].opened = true;
-    }
     return _openedChild;
   }
 
   set openedChild(JeduxHolder child) {
+    if (_openedChild == child) return;
     if (_openedChild != null) {
       _openedChild.setProperty(JeduxDataFormat.OPENED, _FALSE, notifyListeners: false);
     }
@@ -274,7 +286,7 @@ abstract class JeduxHolder with _Notifier {
 
   int get depth => (_parent?.depth ?? -1) + 1;
 
-  void setProperty(String name, String value, {bool notifyListeners}) {
+  void setProperty(String name, String value, {bool notifyListeners = true}) {
     _props[name] = value;
     if (notifyListeners) root.notify(NotifyType.PROPERTY_CHANGED);
   }
@@ -529,10 +541,11 @@ class $viewName extends JeduxListener {
 
   @override
   Widget build(BuildContext context) {
-    return _getOpenedChildView(_holder.openedChild);
+    return _getOpenedChildView(jeduxHolder.openedChild);
   }
 
   JeduxListener _getOpenedChildView(JeduxHolder openedHolder) {
+    openedHolder = openedHolder ?? jeduxHolder.initOpenedChild(byPosition: 0);
     switch (openedHolder.runtimeType) {
     ${getChildSwitches(data)}
     }
@@ -588,7 +601,7 @@ class $viewName extends JeduxListener {
 
   static List<String> removeDuplicates(List<String> constEntryList) {
     final uniques = Map<String, bool>();
-    for(int i =0; i<constEntryList.length; i++) {
+    for (int i = 0; i < constEntryList.length; i++) {
       uniques[constEntryList[i]] = true;
     }
     final result = List<String>();

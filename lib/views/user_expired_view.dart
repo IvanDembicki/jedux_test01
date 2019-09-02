@@ -11,12 +11,12 @@ class UserExpiredView extends JeduxListener {
 
   @override
   Widget build(BuildContext context) {
-    print("${_holder.tabs}[UserExpiredView].build([context])");
     return Center(
       child: Column(
         children: <Widget>[
           Text(_holder.title),
-          MaterialButton(color: Colors.orange,
+          MaterialButton(
+            color: Colors.orange,
             onPressed: _holder.onPressed,
             child: Text("User expired button"),
           ),

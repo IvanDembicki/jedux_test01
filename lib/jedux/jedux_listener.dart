@@ -5,10 +5,9 @@ import 'jedux.dart';
 class JeduxListener extends StatelessWidget {
   final JeduxHolder jeduxHolder;
 
-  const JeduxListener(this.jeduxHolder, {Key key}) : super(key: key);
+  JeduxListener(this.jeduxHolder, {Key key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return this;
-  }
+  Widget build(BuildContext context) => null;
+
 }

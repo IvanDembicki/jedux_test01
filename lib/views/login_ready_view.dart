@@ -14,10 +14,8 @@ class LoginReadyView extends JeduxListener {
   LoginReadyHolder get _holder => jeduxHolder as LoginReadyHolder;
 
   LoginReadyView(JeduxHolder stateHolder, {Key key}) : super(stateHolder, key: key);
-
   @override
   Widget build(BuildContext context) {
-    print("${_holder.tabs}[LoginReadyView].build([context])");
     return Scaffold(
         appBar: AppBar(title: Text(_holder.title), backgroundColor: Colors.lightGreen),
         body: Column(
@@ -42,6 +40,7 @@ class LoginReadyView extends JeduxListener {
   }
 
   JeduxListener _getOpenedChildView(JeduxHolder openedHolder) {
+    openedHolder = openedHolder ?? jeduxHolder.initOpenedChild(byPosition: 1);
     switch (openedHolder.runtimeType) {
       case UserNewbieHolder:
         return UserNewbieView(openedHolder);
@@ -53,5 +52,4 @@ class LoginReadyView extends JeduxListener {
     print("***ERROR*** [LoginReadyView]._getOpenedChildView([${openedHolder.runtimeType}])");
     return null;
   }
-
 }

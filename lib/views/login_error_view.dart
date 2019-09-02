@@ -11,7 +11,6 @@ class LoginErrorView extends JeduxListener {
 
   @override
   Widget build(BuildContext context) {
-    print("${_holder.tabs}[LoginErrorView].build([context])");
     return Scaffold(
         appBar: AppBar(title: Text(_holder.title), backgroundColor: Colors.red),
         body: Column(

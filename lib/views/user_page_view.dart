@@ -11,7 +11,6 @@ class UserPageView extends JeduxListener {
 
   @override
   Widget build(BuildContext context) {
-    print("${_holder.tabs}[UserPageView].build([context])");
     return Text("Hello world ${_holder.nodeType}");
   }
 }

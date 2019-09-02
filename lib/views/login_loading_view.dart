@@ -11,7 +11,6 @@ class LoginLoadingView extends JeduxListener {
 
   @override
   Widget build(BuildContext context) {
-    print("${_holder.tabs}[LoginLoadingView].build([context])");
     return Scaffold(
         appBar: AppBar(title: Text(_holder.title), backgroundColor: Colors.blue),
         body: Column(

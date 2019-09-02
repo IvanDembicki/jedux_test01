@@ -19,11 +19,11 @@ class AppView extends JeduxListener {
 
   @override
   Widget build(BuildContext context) {
-    print("${_holder.tabs}[AppView].build([context])");
     return _getOpenedChildView(_holder.openedChild);
   }
 
   JeduxListener _getOpenedChildView(JeduxHolder openedHolder) {
+    openedHolder = openedHolder ?? jeduxHolder.initOpenedChild(byPosition: 1);
     switch (openedHolder.runtimeType) {
       case LoginWaitingHolder:
         return LoginWaitingView(openedHolder);
@@ -37,5 +37,4 @@ class AppView extends JeduxListener {
     print("***ERROR*** [AppView]._getOpenedChildView([${openedHolder.runtimeType}])");
     return null;
   }
-
 }

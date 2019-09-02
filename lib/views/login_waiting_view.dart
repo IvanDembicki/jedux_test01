@@ -11,9 +11,11 @@ class LoginWaitingView extends JeduxListener {
 
   @override
   Widget build(BuildContext context) {
-    print("${_holder.tabs}[LoginWaitingView].build([context])");
     return Scaffold(
-        appBar: AppBar(title: Text(_holder.title), backgroundColor: Colors.black26,),
+        appBar: AppBar(
+          title: Text(_holder.title),
+          backgroundColor: Colors.black26,
+        ),
         body: Column(
           children: <Widget>[
             Center(

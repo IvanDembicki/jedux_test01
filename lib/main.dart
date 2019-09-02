@@ -5,11 +5,19 @@ import 'jedux_data/jedux_builders.dart';
 import 'jedux_data/jedux_data.dart';
 import 'views/app_view.dart';
 
+import 'dart:ui' as ui;
 
-void main() => runApp(MyApp());
+void main() {
+  void beginFrame(Duration duration) {
+    print("[main].beginFrame([$duration])");
+  }
+
+  ui.window.onBeginFrame = beginFrame;
+  ui.window.scheduleFrame();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
-  
   final jeduxHolder = JeduxHolder.create(JeduxData.map, JeduxBuilders.map);
 
   @override
