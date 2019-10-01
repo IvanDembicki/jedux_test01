@@ -1,6 +1,6 @@
 // login_ready_holder.dart
 import '../jedux_data/jedux_const.dart';
-import '../jedux/jedux.dart';
+import 'package:jedux_test01/jedux.dart';
 
 class LoginReadyHolder extends JeduxHolder {
   static LoginReadyHolder build(Map data, JeduxHolder parent) {

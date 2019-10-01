@@ -1,6 +1,6 @@
 // app_view.dart
 import 'package:flutter/material.dart';
-import '../jedux/jedux.dart';
+import 'package:jedux_test01/jedux.dart';
 import '../jedux_holders/app_holder.dart';
 
 import '../jedux_holders/login_waiting_holder.dart';

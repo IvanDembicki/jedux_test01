@@ -1,6 +1,6 @@
 // login_waiting_holder.dart
 import '../jedux_data/jedux_const.dart';
-import '../jedux/jedux.dart';
+import 'package:jedux_test01/jedux.dart';
 
 class LoginWaitingHolder extends JeduxHolder {
   static LoginWaitingHolder build(Map data, JeduxHolder parent) {

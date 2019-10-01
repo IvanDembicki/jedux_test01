@@ -1,7 +1,8 @@
 // views/user_page_view.dart
 
 import 'package:flutter/material.dart';
-import '../jedux/jedux.dart';
+
+import '../jedux.dart';
 import '../jedux_holders/user_page_holder.dart';
 
 class UserPageView extends JeduxListener {

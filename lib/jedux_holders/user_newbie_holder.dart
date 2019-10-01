@@ -1,6 +1,6 @@
 // user_newbie_holder.dart
 import '../jedux_data/jedux_const.dart';
-import '../jedux/jedux.dart';
+import 'package:jedux_test01/jedux.dart';
 
 class UserNewbieHolder extends JeduxHolder {
   static UserNewbieHolder build(Map data, JeduxHolder parent) {

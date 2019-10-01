@@ -1,6 +1,6 @@
 // login_error_holder.dart
 import '../jedux_data/jedux_const.dart';
-import '../jedux/jedux.dart';
+import 'package:jedux_test01/jedux.dart';
 
 class LoginErrorHolder extends JeduxHolder {
   static LoginErrorHolder build(Map data, JeduxHolder parent) {

@@ -1,9 +1,20 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:recase/recase.dart';
 
-import 'jedux.dart';
+typedef JeduxHolderBuilder = JeduxHolder Function(Map, JeduxHolder);
+
+class JeduxDataFormat {
+  static const TYPE = "_type";
+  static const PROPS = "_props";
+  static const CHILDREN = "_children";
+  static const OPENED = "_opened";
+  static const PATH = "_path";
+  static const ID = "_id";
+  static const DEPTH = "_depth";
+}
 
 /// Представляет состояние узла данных в иерархии состояний.
 /// Дерево состояний формируется из данных [JeduxData],
@@ -16,8 +27,6 @@ import 'jedux.dart';
 ///
 /// Если были вызваны методы [setProperty] или он информирует зависимый [JeduxHolderProvider] о том,
 /// что произошли изменения.
-
-typedef JeduxHolderBuilder = JeduxHolder Function(Map, JeduxHolder);
 
 abstract class JeduxHolder with _Notifier {
   static const String _TRUE = "true";
@@ -369,7 +378,7 @@ class _JeduxChecker {
       builders.add("""// ===== Add this lines to 'jedux_data/jedux_builders.dart map =====
       class JeduxBuilders {
           static final Map<String, JeduxHolder Function(Map, JeduxHolder)> map = {
-          // yes, here
+            // yes, here
           };
       }
       """);
@@ -613,4 +622,49 @@ class $viewName extends JeduxListener {
     });
     return result;
   }
+}
+
+class JeduxListener extends StatelessWidget {
+  final JeduxHolder jeduxHolder;
+
+  JeduxListener(this.jeduxHolder, {Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) => null;
+}
+
+typedef ChildBuilder = JeduxListener Function(JeduxHolder holder);
+
+class JeduxProvider extends StatefulWidget {
+  final JeduxHolder jeduxHolder;
+  final ChildBuilder childBuilder;
+
+  JeduxProvider({Key key, @required this.jeduxHolder, @required this.childBuilder})
+      : assert(jeduxHolder != null),
+        assert(childBuilder != null),
+        super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => _JeduxProviderState();
+}
+
+class _JeduxProviderState extends State<JeduxProvider> {
+  JeduxListener child;
+
+  @override
+  void initState() {
+    resetChild();
+    widget.jeduxHolder.addListener(NotifyType.PROPERTY_CHANGED, onPropertyChanged);
+    widget.jeduxHolder.addListener(NotifyType.STRUCTURE_CHANGED, onStructureChanged);
+    super.initState();
+  }
+
+  void resetChild() => child = widget.childBuilder(widget.jeduxHolder);
+
+  void onPropertyChanged(dynamic type) => setState(() => resetChild());
+
+  void onStructureChanged(dynamic type) => setState(() => resetChild());
+
+  @override
+  Widget build(BuildContext context) => child;
 }

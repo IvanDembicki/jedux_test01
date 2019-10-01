@@ -1,7 +1,7 @@
 // views/user_expired_view.dart
 
 import 'package:flutter/material.dart';
-import '../jedux/jedux.dart';
+import 'package:jedux_test01/jedux.dart';
 import '../jedux_holders/user_expired_holder.dart';
 
 class UserExpiredView extends JeduxListener {

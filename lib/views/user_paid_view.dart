@@ -1,9 +1,9 @@
 // user_paid_view.dart
 import 'package:flutter/material.dart';
-import '../jedux/jedux.dart';
-import '../jedux_holders/user_paid_holder.dart';
+import 'package:jedux_test01/jedux.dart';
 
 import '../jedux_holders/user_page_holder.dart';
+import '../jedux_holders/user_paid_holder.dart';
 import 'user_page_view.dart';
 
 class UserPaidView extends JeduxListener {

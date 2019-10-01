@@ -1,7 +1,7 @@
 // views/login_loading_view.dart
 
 import 'package:flutter/material.dart';
-import '../jedux/jedux.dart';
+import 'package:jedux_test01/jedux.dart';
 import '../jedux_holders/login_loading_holder.dart';
 
 class LoginLoadingView extends JeduxListener {

@@ -1,6 +1,6 @@
 // app_holder.dart
 import '../jedux_data/jedux_const.dart';
-import '../jedux/jedux.dart';
+import 'package:jedux_test01/jedux.dart';
 
 class AppHolder extends JeduxHolder {
   static AppHolder build(Map data, JeduxHolder parent) {

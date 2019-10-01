@@ -1,6 +1,6 @@
 // user_page_holder.dart
 import '../jedux_data/jedux_const.dart';
-import '../jedux/jedux.dart';
+import 'package:jedux_test01/jedux.dart';
 
 class UserPageHolder extends JeduxHolder {
   static UserPageHolder build(Map data, JeduxHolder parent) {

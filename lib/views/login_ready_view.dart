@@ -1,6 +1,6 @@
 // login_ready_view.dart
 import 'package:flutter/material.dart';
-import '../jedux/jedux.dart';
+import 'package:jedux_test01/jedux.dart';
 import '../jedux_holders/login_ready_holder.dart';
 
 import '../jedux_holders/user_newbie_holder.dart';

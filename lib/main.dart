@@ -1,19 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'jedux/jedux.dart';
+import 'package:jedux_test01/jedux.dart';
 import 'jedux_data/jedux_builders.dart';
 import 'jedux_data/jedux_data.dart';
 import 'views/app_view.dart';
 
-import 'dart:ui' as ui;
-
 void main() {
-  void beginFrame(Duration duration) {
-    print("[main].beginFrame([$duration])");
-  }
-
-  ui.window.onBeginFrame = beginFrame;
-  ui.window.scheduleFrame();
   runApp(MyApp());
 }
 

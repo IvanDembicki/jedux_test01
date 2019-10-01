@@ -1,7 +1,7 @@
 // views/login_error_view.dart
 
 import 'package:flutter/material.dart';
-import '../jedux/jedux.dart';
+import 'package:jedux_test01/jedux.dart';
 import '../jedux_holders/login_error_holder.dart';
 
 class LoginErrorView extends JeduxListener {

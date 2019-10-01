@@ -1,7 +1,8 @@
 // views/user_newbie_view.dart
 
 import 'package:flutter/material.dart';
-import '../jedux/jedux.dart';
+
+import '../jedux.dart';
 import '../jedux_holders/user_newbie_holder.dart';
 
 class UserNewbieView extends JeduxListener {

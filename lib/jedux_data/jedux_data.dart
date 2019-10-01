@@ -1,4 +1,4 @@
-import 'package:jedux_test01/jedux/jedux_data_format.dart';
+import '../jedux.dart';
 
 class JeduxData {
   static const Map<String, dynamic> map = {
